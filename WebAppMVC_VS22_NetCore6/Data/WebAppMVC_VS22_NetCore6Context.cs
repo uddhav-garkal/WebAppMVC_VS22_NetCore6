@@ -14,6 +14,6 @@ namespace WebAppMVC_VS22_NetCore6.Data
         {
         }
 
-        public DbSet<WebAppMVC_VS22_NetCore6.Models.Product> Product { get; set; } = default!;
+        public DbSet<WebAppMVC_VS22_NetCore6.Models.Product> Products { get; set; } = default!;
     }
 }

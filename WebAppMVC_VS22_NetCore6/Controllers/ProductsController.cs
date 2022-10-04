@@ -23,18 +23,18 @@ namespace WebAppMVC_VS22_NetCore6.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Product.ToListAsync());
+            return View(await _context.Products.ToListAsync());
         }
 
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Product == null)
+            if (id == null || _context.Products == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Product
+            var product = await _context.Products
                 .FirstOrDefaultAsync(m => m.ProductID == id);
             if (product == null)
             {
@@ -69,12 +69,12 @@ namespace WebAppMVC_VS22_NetCore6.Controllers
         // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Product == null)
+            if (id == null || _context.Products == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Product.FindAsync(id);
+            var product = await _context.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -120,12 +120,12 @@ namespace WebAppMVC_VS22_NetCore6.Controllers
         // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Product == null)
+            if (id == null || _context.Products == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Product
+            var product = await _context.Products
                 .FirstOrDefaultAsync(m => m.ProductID == id);
             if (product == null)
             {
@@ -140,14 +140,14 @@ namespace WebAppMVC_VS22_NetCore6.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Product == null)
+            if (_context.Products == null)
             {
                 return Problem("Entity set 'WebAppMVC_VS22_NetCore6Context.Product'  is null.");
             }
-            var product = await _context.Product.FindAsync(id);
+            var product = await _context.Products.FindAsync(id);
             if (product != null)
             {
-                _context.Product.Remove(product);
+                _context.Products.Remove(product);
             }
 
             await _context.SaveChangesAsync();
@@ -156,7 +156,7 @@ namespace WebAppMVC_VS22_NetCore6.Controllers
 
         private bool ProductExists(int id)
         {
-            return _context.Product.Any(e => e.ProductID == id);
+            return _context.Products.Any(e => e.ProductID == id);
         }
     }
 }
