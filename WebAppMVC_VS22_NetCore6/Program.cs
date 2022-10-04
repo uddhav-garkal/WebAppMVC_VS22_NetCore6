@@ -1,11 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using WebAppMVC_VS22_NetCore6.Data;
-
+using WebAppMVC_VS22_NetCore6.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<WebAppMVC_VS22_NetCore6Context>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("WebAppMVC_VS22_NetCore6Context") ?? throw new InvalidOperationException("Connection string 'WebAppMVC_VS22_NetCore6Context' not found.")));
+
+builder.Services.AddTransient<IProductService, ProductService>();
+
+//builder.Services.AddDbContext<WebAppMVC_VS22_NetCore6Context>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("WebAppMVC_VS22_NetCore6Context") ?? throw new InvalidOperationException("Connection string 'WebAppMVC_VS22_NetCore6Context' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

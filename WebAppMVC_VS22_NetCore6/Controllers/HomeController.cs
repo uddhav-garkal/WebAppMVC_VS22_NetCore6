@@ -8,17 +8,17 @@ namespace WebAppMVC_VS22_NetCore6.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IProductService _productService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IProductService productService)
         {
             _logger = logger;
+            _productService = productService;
         }
 
         public IActionResult Index()
-        {
-            ProductService productService = new ProductService();
-            IEnumerable<Product> model = productService.GetProducts();
-
+        {           
+            IEnumerable<Product> model = _productService.GetProducts();
 
             return View(model);
         }

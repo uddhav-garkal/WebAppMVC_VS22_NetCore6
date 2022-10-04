@@ -21,7 +21,7 @@
     },
     "resourceName": {
       "type": "string",
-      "defaultValue": "myfirstwebapplication11",
+      "defaultValue": "WebAppMVCVS22NetCore6githubpublished",
       "metadata": {
         "description": "Name of the main resource to be created by this template."
       }
